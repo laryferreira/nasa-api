@@ -32,9 +32,14 @@
     <!-- Custom scripts -->
     <script type="text/javascript">
 
-      let xmlhttp = rew XMLHttpRequest();
+      let xmlhttp = new XMLHttpRequest();
 
-      xmlhttp
+      xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          let date = JSON.parse(this.responseText); 
+          let copyright = data["copyright"];
+          console.log(copyright);
+        }      
 
       let queryUrl = "https://api.nasa.gov/planetary/apod?";
       let queryKey = "api_key=ZAjLSSc3xwAubGqOWt0GPR6HSJLqBdphWGx1bAlB";
@@ -44,3 +49,4 @@
   </script>
   </body>
 </html>
+      }
