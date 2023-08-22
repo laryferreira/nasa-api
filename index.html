@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,13 +19,18 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
     />
     <!-- MDB -->
-    <link rel="stylesheet" href="public/css/mdb.min.css">
+    <link rel="stylesheet" href="css/mdb.min.css">
   </head>
   <body class="p-3 mb-2 bg-light bg-gradient text-dark">
 
 
-    <!-- Start your project here-->
+
+    <!-- Demo -->
+    
+    <!-- Title and Quote -->
+
     <h1>Daily Nasa</h1>
+
     <figure class="text-center">
       <blockquote class="blockquote">
         <p>"Space is for everybody. It's not just for a few people in science or math, or for a select group of astronauts. That's our new frontier out there, and it's everybody's business to know about space. </p>
@@ -33,6 +39,10 @@
         <cite title="Source Title"> Christa McAuliffe, Astronaut </cite>
       </figcaption>
     </figure>
+
+
+    <!-- Datapicker (PAID MDB -- NOT WORKING) -->
+
     <div class="container my-5 ">
       <div class="form-outline datepicker mb-4" data-mdb-format = "dd, mm, yyyy">
 
@@ -43,41 +53,48 @@
         data-mdb-toggle = "datepicker" />
         <label for="date-picker-example" class="form-label">Select a date</label>
       </div>
-      <div class="row">
-        <div class = "col-md-8 mb-4 mb-md-0">
-          <!--Section: Demo -->
-          <section id="wrapper-media" class=""></section>
+    
+    <!-- Row and columns (media and text) -->
 
+      <div class="row">
+
+        <div class = "col-md-8 mb-4 mb-md-0">  
+          <section id="wrapper-media" class=""></section>
 
       </div>
 
         <div class = "col-md-4 mb-4 mb-md-0">
+          
           <h5 id="wrapper-title"></h5>
           <p class="mb-2 text-muted"> Copyright: <span id="wrapper-copyright">
           </span></p>
           <p id="wrapper-explanation"></p>
-
-        
-
-
         </div>
-
 
       </div>
 
     </div>
-    <!-- End your project here-->
+    
+    <!-- End of Demo-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="public/js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
     <!-- Custom scripts -->
+
     <script type="text/javascript">
+
+    // HTTP Requests (HTTP GET)
 
       let xmlhttp = new XMLHttpRequest();
 
       xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          let data = JSON.parse(this.responseText); 
+          let data = JSON.parse(this.responseText);  //Complete and Sucessful request
+
+
+          // let = variable, can be changed later
+          // equals variables as data from API
 
           let copyright = data["copyright"];
           let date = data["date"];
@@ -86,6 +103,9 @@
           let media_type = data["media_type"];
           let title = data["title"];
           let url = data["url"];
+
+          // Dealing with images and videos differently
+
           let imageType = `
               <div
               class="bg-image hover-overlay ripple shadow-1-strong rounded"
@@ -111,7 +131,11 @@
               ></iframe>
             </div>
           `;
-       
+
+          // Use console.log to display on console (F12)
+
+        // HTML id's used to display data from API
+
           document.getElementById("wrapper-title").innerHTML = title;
           document.getElementById("wrapper-copyright").innerHTML = copyright;
           document.getElementById("wrapper-explanation").innerHTML = explanation;
@@ -129,16 +153,22 @@
 
         }      
       }
+
+
+      //API call
+      
       let queryUrl = "https://api.nasa.gov/planetary/apod?";
-      let queryKey = "api_key=ZAjLSSc3xwAubGqOWt0GPR6HSJLqBdphWGx1bAlB";
-      let queryDate = "&date=2023-01-04";
+      let queryKey = "your api key here";
+      let queryDate = "&date=2023-01-04"; //Change date value !!
 
       let queryFull = queryUrl + queryKey + queryDate;
 
       xmlhttp.open("GET", queryFull, true);
       xmlhttp.send();
       
-  </script>
-  </body>
-</html>
 
+  </script>
+
+  </body>
+
+</html>
