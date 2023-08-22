@@ -1,13 +1,20 @@
 {
+  "scripts": {
+    "start": "node index.js",
+    "build": "firebase deploy"
+  },
   "database": {
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "public",
+    "public": "public", 
+    
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+
     ]
   }
+  
 }
