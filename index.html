@@ -19,7 +19,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
     />
     <!-- MDB -->
-    <link rel="stylesheet" href="public/css/mdb.min.css">
+    <link rel="stylesheet" href="css/mdb.min.css">
   </head>
   <body class="p-3 mb-2 bg-light bg-gradient text-dark">
 
@@ -29,7 +29,7 @@
     
     <!-- Title and Quote -->
 
-    <h1>Daily Nasa</h1>
+    <h1 class="fw-italic font-monospace">Daily Nasa</h1>
 
     <figure class="text-center">
       <blockquote class="blockquote">
@@ -41,7 +41,7 @@
     </figure>
 
 
-    <!-- Datapicker (PAID MDB -- NOT WORKING) -->
+    <!-- Datapicker (since MDB = paid, html solution) -->
 
     <div class="container my-5 ">
       <div class="form-outline datepicker mb-4" data-mdb-format="dd, mm, yyyy">
@@ -81,7 +81,7 @@
     <!-- End of Demo-->
 
     <!-- MDB -->
-    <script type="text/javascript" src="public/js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
 
     <!-- Custom scripts -->
 
@@ -89,12 +89,12 @@
 
     // HTTP Requests (HTTP GET)
 
-      
+// API CALL 
 let xmlhttp = new XMLHttpRequest();
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
-let queryKey = "api_key=ZAjLSSc3xwAubGqOWt0GPR6HSJLqBdphWGx1bAlB";
+let queryKey = "your api key here";
 
-
+// Changing image or video based on date
 function updateImageOrVideo(selectedDate) {
   let queryDate = "&date=" + selectedDate;
   let queryFull = queryUrl + queryKey + queryDate;
@@ -152,7 +152,7 @@ function updateImageOrVideo(selectedDate) {
   xmlhttp.send();
 }
 
-
+// Event listener for date picker
 document.getElementById("start").addEventListener("change", function () {
   let selectedDate = document.getElementById("start").value;
   updateImageOrVideo(selectedDate);
