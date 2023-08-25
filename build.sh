@@ -1,4 +1,5 @@
 #!/bin/sh
+mkdir -p public 
 cp index.html public/index.html
 cp -r assets/ public/assets
 
